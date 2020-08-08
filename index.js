@@ -80,18 +80,19 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(inning, numInn){
+function finalScore(callback, numInn){
   let home = 0;
   let away = 0;
 for(let i = 1; i <= numInn; i++){
-  home += inning();
+  home += callback();
 }
   for(let k = 1; k <= numInn; k++){ 
-  away += inning();
+  away += callback();
 }
-  console.log(`"Home: ${home}, "Away": ${away}`)
+  return(`"Home: ${home}, "Away": ${away}`)
 
-}console.log(finalScore(inning(), 9))
+}
+console.log(finalScore(inning, 9))
 
 /* Task 4: 
 
