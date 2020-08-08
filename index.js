@@ -80,12 +80,18 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(fun1, numInnings){
+function finalScore(inning, numInn){
   let home = 0;
   let away = 0;
+for(let i = 1; i <= numInn; i++){
+  home += inning();
+}
+  for(let k = 1; k <= numInn; k++){ 
+  away += inning();
+}
+  console.log(`"Home: ${home}, "Away": ${away}`)
 
-
-}console.log(finalScore(inning, 9))
+}console.log(finalScore(inning(), 9))
 
 /* Task 4: 
 
@@ -107,9 +113,34 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-// function getInningScore()
-// function scoreboard(fun1, fun2) {
-  /* CODE HERE */
-// }
-
+function getInningScore(cb){
+return {home: cb(), away:cb()}
+}
+console.log(getInningScore(inning))
+function scoreboard(cb1, cb2, numInnings) {
+  let awayTeam = 0;
+  let homeTeam = 0;
+  for(let i = 1; i <= numInnings; i++){
+  if (i === 1){
+    awayTeam += cb1(cb2).away
+    homeTeam += cb1(cb2).home
+    console.log(`1st inning: ${awayTeam} - ${homeTeam}`)
+  } else if (i ===2){
+    awayTeam += cb1(cb2).away
+    homeTeam += cb1(cb2).home
+    console.log(`2nd inning: ${awayTeam} - ${homeTeam}`)
+  } else if (i === 3){
+    awayTeam += cb1(cb2).away
+    homeTeam += cb1(cb2).home
+    console.log(`3rd inning: ${awayTeam} - ${homeTeam}`)
+  } else {
+    awayTeam += cb1(cb2).away
+    homeTeam += cb1(cb2).home
+    console.log(`${i}th inning: ${awayTeam} - ${homeTeam}`);
+  }
+    
+  }
+  console.log(`Final Score: ${awayTeam} - ${homeTeam}`);
+}
+scoreboard(getInningScore, inning, 9)
 
